@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  strapi:
+    container_name: strapi
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 1337:1337
+    volumes:
+      - .:/srv/app
+    depends_on:
+      - cmsdb
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: cms
+      DATABASE_HOST: cmsdb
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: secret
+
+  cmsdb:
+    container_name: cmsdb
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: cms
+
+networks:
+  default:
+    name: dev
+    driver: bridge
+
+volumes:
+  postgres_data:
+    name: postgres-data
