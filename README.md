@@ -1,3 +1,5 @@
-# Strapi application
+# Headless CMS
 
-A quick description of your strapi application
+Implementation of Strapi using PostgreSQL. Strapi and PostgreSQL are running inside Docker containers
+
+
