@@ -26,7 +26,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - cms_data:/var/lib/postgresql/data
     restart: unless-stopped
     environment:
       POSTGRES_USER: root
@@ -39,5 +39,5 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
-    name: postgres-data
+  cms_data:
+    name: cms-data

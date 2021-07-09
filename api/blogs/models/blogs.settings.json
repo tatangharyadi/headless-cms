@@ -2,8 +2,7 @@
   "kind": "collectionType",
   "collectionName": "blogs",
   "info": {
-    "name": "Blogs",
-    "description": ""
+    "name": "Blogs"
   },
   "options": {
     "increments": true,
@@ -12,10 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Content": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "content": {
       "type": "richtext"
     }
   }
